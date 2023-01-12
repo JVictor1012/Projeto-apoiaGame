@@ -1,12 +1,16 @@
 import './styles.css';
 import { Component } from 'react';
 import { Header } from '../components/Header';
-import { Posts } from '../components/posts';
-import { Banner } from '../components/banner';
+import { Posts } from '../components/Posts/posts';
+import { Banner } from '../components/Banner/banner';
+import { ButtonPage } from '../components/ButtonPage';
 
 class Home extends Component {
   state = { 
-    posts: []
+    posts: [],
+    allposts: [],
+    page :0 ,
+    postsPerPage: 9
     
   };
 
@@ -16,18 +20,40 @@ class Home extends Component {
 
   loadPosts = async () => {
     const postsResponse = fetch('https://jsonplaceholder.typicode.com/posts');
-    const [posts] = await Promise.all([postsResponse]);
+    const photosResponse = fetch('https://jsonplaceholder.typicode.com/photos');
+
+    const [posts, photos] = await Promise.all([postsResponse, photosResponse]);
 
     const postsjson = await posts.json();
+    const photosjson = await photos.json();
 
-    this.setState({ posts: postsjson });
+    const { postsPerPage, page } = this.state
 
+    const postsAndPhotos = postsjson.map((post, index) => {
+      return { ...post, cover: photosjson[index].url }
+    })
+
+    this.setState({ posts: postsAndPhotos.slice(page,postsPerPage),
+    allposts: postsAndPhotos });
+
+  }
+
+  loadMorePosts = () => {
+    const {page, postsPerPage, allposts, posts} = this.state
+
+    const nextPage = page + postsPerPage;
+    const nextPosts = allposts.slice(nextPage, nextPage + postsPerPage)
+
+    posts.push(...nextPosts);
+
+    this.setState({posts, page: nextPage});
   }
 
 
   render() {
 
-    const { posts } = this.state
+    const { posts, page, postsPerPage, allposts } = this.state
+    const noMorePosts = page + postsPerPage >= allposts.length
     return(
       <div>
       <Header />
@@ -48,7 +74,15 @@ class Home extends Component {
           /> 
         )
         )}
+        
+        <ButtonPage 
+          text={"Carregar mais"}
+          onClick={this.loadMorePosts}
+          disabled={noMorePosts}
+          
+          />
       </div>
+          
       </section>
       </div>
     );
