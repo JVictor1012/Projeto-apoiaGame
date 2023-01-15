@@ -47,6 +47,7 @@ class Home extends Component {
     posts.push(...nextPosts);
 
     this.setState({posts, page: nextPage});
+    console.log(posts.id)
   }
 
 
@@ -59,8 +60,9 @@ class Home extends Component {
       <Header />
 
       <Banner />
-
+        <h2 className='title-page'>Recomendados</h2>
       <section className='container'>
+       
         
       <div className="posts">
         

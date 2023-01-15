@@ -1,0 +1,116 @@
+
+
+.container-page{
+    margin: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.image{
+    max-width: 60%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 100%;
+    margin: 20px;
+    margin-bottom: 0px;
+    
+   
+}
+
+.image-container{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    float: right;
+}
+
+.text-meta{
+    align-self: center;
+    margin-top: 30px;
+}
+
+.texto{
+    justify-content: left;
+    margin: 15px;
+    margin-bottom: 30px ;
+    width: 45%;
+    font-family: "Titillium Web", sans-serif;
+    padding: 15px;
+    border-color: darkgray;
+    border-radius: 15px;
+}
+
+.action-button button{
+    width: 150px;
+    max-height: 70px;
+    height: 40px;
+    background-color: #026E70;
+    border: none;
+    margin: 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 15px;
+   
+    
+}
+
+.action-button button:hover{
+    background-color: #025557;
+}
+
+.action-button{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+#Favorito{
+    background-color: #F2A71B;
+}
+
+#disclaimer{
+    color: blueviolet;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.about{
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    width: 50%;
+    border-radius: 15px;
+    padding: 15px;
+    height: 500px;
+    float: right;
+    margin-right: 10px;
+}
+
+.about h2{
+    margin: 15px;
+
+}
+.about p{
+    margin: 15px;
+}
+
+.rewards{
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    width: 40%;
+    border-radius: 15px;
+    padding: 15px;
+    height: 500px;
+    float: left;
+
+}
+
+.rewards h2{
+    margin: 15px;
+
+}
+.rewards p{
+    margin: 15px;
+}
